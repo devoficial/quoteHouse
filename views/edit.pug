@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div(class="container")
+    div(class="container")
+      nav(class="navbar navbar-expand-lg navbar-dark bg-dark")
+        a(class="navbar-brand" href="#") QuoteMachine 
+      div(class="jumbotron")
+        form(action=`/edit/${quote._id}` method="POST")
+          div(class="form-group")
+            label(for="name") Name
+            input(type="name" class="form-control" id="name" value=quote.name name="quote[name]" placeholder="enter your name")
+          div(class="form-group")
+            label(for="img") Image
+            input(type="text" class="form-control" id="img" name="quote[img]" value=quote.img placeholder="enter your image link")
+          div(class="form-group")
+            label(for="quote") Write a quote : )
+            textarea(class="form-control" id="quote" name="quote[quote]" rows="4") #{ quote.quote } 
+          div(class="form-group")
+            button(class="form-control btn btn-lg btn-info" value="submit" type="submit") Submit
+          
+    
