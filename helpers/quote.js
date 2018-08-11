@@ -6,7 +6,6 @@ let db = require("../models");
 exports.getQuote = (req,res) => {
     db.Quote.find()
     .then( data =>{
-        console.log(data);
         res.render("index",{
         title:"Quote Machine",
         data:data

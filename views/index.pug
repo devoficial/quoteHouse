@@ -1,27 +1,27 @@
 extends layout
 
 block content
-  div(class="container")
+  div(class="container-fluid")
     div(class="container")
       nav(class="navbar navbar-expand-lg navbar-dark bg-dark")
         a(class="navbar-brand" href="#") QuoteMachine
       div(class="jumbotron text-center")
-        h1(class="display-4") Quote machine :)
-        p(class="info")
-          |This is a hub for friends
-          |Share a any quote here
+        h1(class="display-4") Quote House :)
+        h4(class="info")
+          |House of quotes
         hr(class="my-4")
         div(class="container text-center")
           a(class="btn btn-primary btn-lg" href="/newquote" role="button") Share Your Quote  
       div(class="container")
-        each val in data
-          div(class="alert alert-primary text-center" role="alert")
-            p(class="alert-heading") Shared by : #{ val.name.toUpperCase() }
-            p #{ val.quote } 
-            - var src = val.img       
-            img(src=src, class="rounded" alt="quotepic" style="max-width:20%")
-            hr
-            p(class="mb-0")
-              em submitted on - #{ val.createdDate }
-            - var id = val._id
-            a(href="/edit/"+id class="btn btn-lg btn-danger") Edit 
+          div.row 
+            each val in data
+              div(class="col-12 text-center  mb-1")
+                q.mb-0.pb-2  #{ val.quote }
+                hr
+                - var src = val.img
+                img(src=src style="max-width:40%; height:140px")
+                footer.blockquote-footer
+                  cite(title="Source Title") Submitted By :#{ val.name } On - #{ val.createdDate.toISOString().slice(0,10) }    
+                - var id = val._id
+                a(href="/edit/"+id class="btn btn-sm btn-danger") Edit 
+      
